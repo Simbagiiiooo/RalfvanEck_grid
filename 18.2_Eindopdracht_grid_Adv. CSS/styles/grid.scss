@@ -1,0 +1,66 @@
+@mixin size {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: #c3cfe2;
+}
+
+.container {
+  position: relative;
+  display: block;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-content: center;
+  grid-gap: 2em;
+  padding: 1rem 1rem;
+  box-sizing: content-box;
+  &__items {
+    position: relative;
+    @include size;
+    display: inline-block;
+    &:hover .hover {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+  &__img {
+    display: block;
+    @include size;
+    object-fit: cover;
+  }
+}
+
+.hover {
+  position: absolute;
+  background: rgb(43, 40, 40);
+  opacity: 0;
+  transition: all 0.7s ease-in-out;
+  @include size;
+  top: 0;
+  left: 0;
+  border-radius: 7.4%;
+  &__button {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.3rem;
+  }
+}
+
+@media (min-width: 600px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 800px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
